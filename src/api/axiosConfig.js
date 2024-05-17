@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://damod-app-backend.vercel.app",
+  baseURL: "https://damod-app-backend.vercel.app/api",
 });
 // baseURL: "http://159.65.148.190:8000/api",
 // baseURL: "http://localhost:8000/api",
