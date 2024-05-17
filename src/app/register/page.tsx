@@ -6,7 +6,7 @@ import Image from "next/image";
 import login from "@/images/register.png";
 import Link from "next/link";
 import { authApi } from "@/api";
-import bgregister from '@/images/diamond-bg-register.jpg';
+import bgregister from "@/images/diamond-bg-register.jpg";
 
 export default function Register() {
   const router = useRouter();
@@ -23,13 +23,13 @@ export default function Register() {
       const res = await authApi.register(payload);
       console.log(res);
 
-      if (res.status == 202) {
+      if (res?.status == 202) {
         router.push("/login");
       } else {
         console.log("Something Went Wriong");
       }
     } catch (err: any) {
-      console.log("Error While Registering a User");
+      console.log("Error While Registering a User", err);
     }
     // Handle form submission here
     // Redirect user after successful registration
@@ -46,14 +46,16 @@ export default function Register() {
   });
 
   return (
-    <div className="min-h-screen font-Fahkwang grid place-content-center relative before:content-[''] before:absolute before:w-full before:h-full before:bg-black before:bg-opacity-50" style={{
-      backgroundImage: `url(${bgregister.src})`,
-      width: '100%',
-      height: '100%',
-      backgroundPosition:'center'
-    }}>
+    <div
+      className="min-h-screen font-Fahkwang grid place-content-center relative before:content-[''] before:absolute before:w-full before:h-full before:bg-black before:bg-opacity-50"
+      style={{
+        backgroundImage: `url(${bgregister.src})`,
+        width: "100%",
+        height: "100%",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="w-[400px] mx-auto  rounded-3xl flex items-center justify-between relative">
-        
         <div className="w-full  py-8">
           <Formik
             initialValues={{ name: "", email: "", phone: "", password: "" }}
